@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root {
+    --ff: "Poppins", sans-serif;
+    /* color */
+    --black: #05080c;
+    --black-trans: hsla(214, 41%, 3%, 0.8);
+    --white: #ffffff;
+    --accent: #0016db;
+    /*--accent: rgb(0, 219, 35);*/    
+    --primary: #0d141e;
+    --primary-trans: hsla(215, 40%, 8%, 0.8);
+    --secondary: #131b26;
+    --text: #dadce0;
+    /* other */
+    --animate: 0.3s ease-in-out;
+}
+
+/*--------------RESET----------------*/
+*, 
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--ff)
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ff);
+    color:black;
+    font-weight: 300;
+    font-size: 1rem;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+} 
+
+/*-------------- COMPONENTS -------------------*/
+.heading {
+    color: var(--white);
+    font-weight: bold;
+}
+
+.spacer {
+    height: 100vh;
+}
+
+.spacer:nth-child(odd) {
+    background: lightgreen;
+}
+
+.spacer:nth-child(even) {
+    background: lightgray;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.125rem;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+    color: var(--black);
+    background: var(--white);
+    padding: 0.3rem 1.6rem;
+    display: inline-block;
+    text-align: center;
+    transition: var(--animate);
+}
+
+.btn:hover {
+    border: 1px solid var(--white);
+    color: var(--white);
+    background: var(--black);
+    transform: translateY(3px)
+}
+
+.btn--lg {
+    font-size: clamp(1.125rem, 3vw, 1.375rem);
+    padding: 0.5rem 2rem;
+}
+
+.btn--solid {
+    border: 1px solid var();
+    color:  var(--black);
+    background: var();
+}
+
+.btn--solid:hover {
+    border: 1px solid var(--white);
+    color:  var(--black);
+    background: var(--white);
+}
+
+.btn--outline {
+    border: 1px solid var(--white);
+    color:  lightblue;
+    background: transparent;
+}
+
+.btn--outline:hover {
+    border: 1px solid var(--white);
+    color:  var(--black);
+    background: var(--white);
+}
+
+/*----------------CONTAINER---------------------*/
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.container__lg {
+    max-width: 1440px;;
+}
+
+.container__md {
+    max-width: 1170px;
+}
+
+.container__sm {
+    max-width: 1050px;
+}
+
+/*----------------HEADER---------------------*/
+.header {
+    height: 60px;
+    background: var(--black);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+    max-width: 150px;
+    width: 100%;
+}
+
+.logo__img {
+    display: block;
+    width: 100%;
+}
+
+.navbar {
+    /*border: 2px solid red; */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    transition: var(--animate);
+}
+
+.navbar__link {
+    margin-right: 40px;
+    color: lightgray;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--animate);
+}
+.navbar__link:hover {
+    color: lightblue;
+}
+/*-------mobile login button disappear-------*/
+.navbar__link.login-link {
+    display: none;
+}
+
+.navbar__link:nth-last-child(2) {
+    margin-right: 0;
+}
+
+/*-------HAMBURGER-------*/
+.toggle {
+    display: none;
+}
+/*======= display: none hide the two lines ===============*/
+.toggle__lable {
+    cursor: pointer;
+    display: none;
+}
+
+.toggle__line {
+    display: block;
+    height: 3px;
+    width: 30px;
+    background: lightgreen;
+    margin: 5px 0;
+    transition: var(--animate)
+}
+
+.toggle__line:nth-child(1) {
+    margin-left: 20px;
+}
+
+.toggle__line:nth-child(2) {
+    width: 50px;
+}
+
+.toggle:checked ~ .toggle__lable > .toggle__line:nth-child(1) {
+    background: white;
+    transform: rotateZ(45deg);
+    width: 30px;
+    margin-top: 10px;
+}
+
+.toggle:checked ~ .toggle__lable > .toggle__line:nth-child(2) {
+    background: white;
+    transform: rotateZ(-45deg);
+    width: 30px;
+    margin-top: -8px;
+    margin-left: 20px;
+}
+
+.toggle:checked ~ .navbar {
+    left: 0;
+}
+
+/*============  MEDIA QUERIES HEADER SECTION =====================*/
+@media screen and (max-width: 979px) {
+    .toggle__lable {
+        display: block;
+    }
+
+    .header {
+        top: 0;
+        position: fixed;
+    }
+
+    .navbar {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 60px;
+        /*left: 0;*/
+        left: 100%; 
+        background: darkblue;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar__link {
+        margin: 5px 0;
+        padding: 5px 50px;
+        color: white;
+        font-size: 1.875rem;
+        transition: var(--animate);
+    }
+    
+    .navbar__link:hover {
+        background: green;
+        border-radius: 50px;
+    }
+
+    .navbar__link.login-link {
+        display: inline-block;
+    }
+
+    .login-btn {
+        display: none;
+    }
+}
+
+/* =================> HERO <====================== */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../img/baskeball-banner.png)
+    no-repeat;
+    background-size: cover;
+    background-position: top center;
+    height: 100vh;
+    padding-top: 60px;
+}
+
+.hero .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero__text {
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.hero__text h1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 25rem;
+    line-height: 1;
+    letter-spacing: -30px;
+}
+
+.hero__text h1 span {
+    font-size: 7.5rem;
+    margin-left: 8rem;
+    color: var(--accent);
+    letter-spacing: normal;
+    position: relative;
+}
+
+.hero__text h1 span:before {
+    content: "Card";
+    position: absolute;
+    top: -50px;
+    left: 100px;
+    color: var(--white);
+    font-size: 3.75rem;
+}
+
+.hero__text h1 span:after {
+    content: "Trade";
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    color: var(--white);
+    font-size: 3.125rem;
+}
+
+.hero__btns .btn:nth-child(1) {
+    margin-right: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ===========>> MEDIA QUERIES HERO SECTION TRAINER SECTION PRICING SECTION FOOTER SECTION<<================= */
+@media screen and (max-width: 1440px) {
+    .hero__text h1 {
+        font-size: 15rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+   .hero__text h1 {
+       font-size: 8rem;
+   }
+
+   .hero__btns {
+       margin-top: 5rem;
+   }
+
+   .hero__text h1 span {
+    font-size: 6.25rem;
+    margin-left: 4rem;
+}
+
+}
+
+@media screen and (max-width: 980px) {
+    
+    .hero__text h1 {
+        font-size: 8rem;
+    }
+   .hero__text h1 span {
+        font-size: 6.25rem;
+        margin-left: 4rem;
+    }
+
+    .hero__text h1 span:before {
+        left: 0;
+        top: -35px;
+        font-size: 2.813rem;
+    }
+    .hero__text h1 span:after {
+        left: 0;
+        bottom: -30px;
+        font-size: 2.188rem;
+    }
+}   
+
+@media screen and (max-width: 770px) {
+    .hero__text h1 {
+        font-size: clamp(100px, 5vw, 400px);
+        letter-spacing: -10px; 
+    } 
+
+    .hero__text h1 span {
+        font-size: clamp(60px, 10vw, 100px);
+        margin-left: 3rem;
+    }
+
+    .trainer {
+        max-width: 470px;
+        width: 70%;
+    }
+
+    .trainers .container {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .price {
+        max-width: 470;
+        width: 70%;
+    }
+
+    .pricing .container {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .footer__content {
+        flex-flow: column wrap;
+    }
+
+    .footer__col {
+        margin-top: 3rem;
+    }
+
+    .footer__col:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .footer__title {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+
+    .hero__btns .btn {
+        display: block;
+        width: 100%;
+    }
+}
+/* CHECK THE SIZE 550PX, MAYBE FOR THE SMALLEST SECTION*/
+@media screen and (max-width: 500px) {
+    .hero__text h1 {
+        position: relative;
+        margin-bottom: 3rem;
+        font-size: 5rem;
+    }
+    .hero__text h1 span {
+        position: absolute;
+        bottom: -50px;
+        left: -40px;
+        font-size: clamp(4rem, 5vw, 8rem);
+    }
+
+    .hero__text h1 span:before {
+        display: none;
+    }
+
+    .hero__text h1 span:after {
+        display: none;
+    }
+
+    .hero__btns {
+        margin-top: 3rem;
+    }
+
+    .cta__content {
+        max-width: 85%;
+    }
+/*===========>> CALL TO ACTION MEDIA QUERIES <<<<=================*/
+    .cta__title {
+        font-size: clamp(30px, 5vw, 40px)
+    }
+
+    .cta__btns {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+    }
+
+    .cta__btns .btn {
+        width: 70%;
+    }
+
+    .cta__btns .btn--solid {
+        margin-left: 2rem;
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+
+/* ==============>> ABOUT <<=======================*/
+    .about {
+        height: 750px;
+        background-color: lightsteelblue;
+    }
+
+    .about .container {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+        display: grid;
+        justify-items: center;
+        gap: 5rem;
+        grid-template-areas: "text image";
+    }
+
+    .about__text {
+        grid-area: text;
+        margin-top: 9rem;
+    }
+
+    .about__title {
+        font-size: clamp(3rem, 7vw, 4.375px);
+        line-height: 1.1;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+    }
+
+    .about__desc {
+        max-width: 27rem;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+
+    .about__img {
+        grid-area: image;
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .about__img img {
+        width: 100%;
+    }
+
+    /* ==============>> FEATURES <<==========================*/
+
+    .features {
+        background: var(--accent);
+        height: 650px;
+    }
+
+    .features .container {
+        display: grid;
+        height: 100%;
+    }
+
+    .features__content {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 6rem 1rem;
+        margin-top: 20rem;
+    }
+
+    .feature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 320px;
+        width: 100%;
+    }
+
+    .features__img  {
+        width: 141px;
+        margin-bottom: 1.5rem;
+    }
+
+    .features__title {
+        text-transform: uppercase;
+        color: var(--black)
+    }
+  
+    /* ==============>> MEDIA QUERIES  <<==========================*/
+
+    @media screen and (max-width: 1040px) {
+        .features {
+            height: unset;
+        }
+
+        .features__content {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+            gap: 2rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 770px) {
+        .about {
+            height: unset;
+        }
+
+        .about .container{
+            padding-top: 6rem;
+            grid-template-areas: "text""image";
+        }
+
+        .about__text {
+            margin-top: 0;
+            max-width: 570px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .about__desc {
+            margin: auto;
+        }
+    }
+
+    /* ===========>> SERVICES SECTION <<==============================*/
+    .services {
+        background: var(--primary);
+    }
+
+    .services .container {
+        padding: 8rem 0;
+    }
+
+    .service__content {
+       width: 100%;
+       display: grid;
+       place-items: center;
+    }
+
+    .service__grid {
+        width: 100%;
+        display: flex;
+        /*=========>> USE FOR FLEX DIRECTION AND FLEX WRAP <<=========== */
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem 0;
+    }
+
+    .service {
+        max-width: 460px;
+        width: 100%;
+        min-height: 470px;
+        height: 100%;
+        position: relative;
+        padding: 2rem
+    }
+
+    .service:nth-child(1) {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/baskeball-hoop.png) no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .service:nth-child(2) {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/baseballfield.png) no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .service:nth-child(3) {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/football-team.png) no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .service__text {
+        /*==========>>> PARENT .service is set to positon: relative; <<=========================*/
+        color: white;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 2rem;
+    }
+
+    .service__title {
+        color: var(--white);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-size: 1.875rem;
+    }
+
+    .service__desc {
+        color: var(--text);
+        font-weight: 300;
+        font-size: 1.125rem;
+    }
+
+/* ===========>> CTA SECTION <<==============================*/
+.cta {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                 url(../img/football-banner.png) no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.cta .container {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    display: grid;
+    place-items: center;
+}
+
+.cta__content {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.cta__title {
+    font-size: 3.125rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.cta__desc {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    font-weight: 300;
+    color: var(--text);
+}
+
+.cta__btns .btn--solid {
+    margin-right: 2rem;
+}
+
+/*==============>>> TRAINER SECTIN <<<====================*/
+.trainers {
+    background: var(--primary)
+}
+
+.trainers .container {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    display: grid;
+    place-items: center;
+}
+
+.trainer__title {
+    text-transform: uppercase;
+    font-size: 3.125rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    color: var(--white);
+}
+/*=========>>> USE FLEXBOX FOR SPACING CONTENT <<<<===============*/
+.trainers__grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 6rem 1rem;
+}
+
+.trainers__grid .trainer {
+    max-width: 270px;
+    min-height: 370px;
+}
+
+.trainer__img {
+    width: 100%;
+    height: 100%;
+    /*IMAGES MIGHT HAVE WEIRD GAP AT THE BOTTOM, FIX WITH DISPLAY: BLOCK*/
+    display: block;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.trainer__name   {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+/*================>>>> MEDIA QUERIES <<<<====================*/
+@media screen and (max-width: 770px) {
+    .trainer {
+        max-width: 470px;
+        width: 70%;
+    }
+
+    .trainers .container {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .trainer__title {
+        font-size: clamp(40px, 5vw, 50px);
+    }
+}
+
+/*================>>>> PRICING <<<<====================*/
+.pricing {
+    background: var(--secondary);
+}
+
+.pricing .container {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    display: grid;
+    place-items: center;
+}
+
+.pricing__title {
+    text-transform: uppercase;
+    font-size: 3.125rem;
+    margin-bottom: 50px;
+    text-align: center;
+    color: var(--white);
+}
+
+.pricing__grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 6rem 1rem;
+}
+
+.price {
+    position: relative;
+    min-height: 635px;
+    max-width: 370px;
+    background: var(--primary);
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*++++++++>>> OVERFLOW: HIDDEN HIDES ANY IMAGE OVER HEIGHT HIDES CONTENT <<<<<<<=========*/
+    overflow: hidden;
+}
+
+.price__banner {
+    width: 100%;
+    position: absolute;
+    top: 15px;
+    right: -65px;
+    background: var(--accent);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    transform: rotate(26deg)
+}
+
+.price__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    /*========>>>> margin-top: -5rem; <<<<<========*/
+}
+
+.price__price {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.money {
+    font-size: 18px;
+    color: var(--text);
+    font-weight: 300;
+    position: relative;
+    top: -1.5rem;
+    right: -10px;
+}
+
+.price__duration {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text);
+    text-transform: capitalize;
+}
+
+.price__options {
+    margin-top: -2rem;
+    color: var(--text);
+}
+
+.price__option {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text);
+    text-transform: capitalize;
+    padding: 0.7rem;
+}
+
+/* =========>>>>> .price:nth-child(1) .price__title {
+    margin-top: calc(-5rem + 30px);
+}
+
+.price:nth-child(3) .price__title {
+    margin-top: calc(-5rem + 30px);
+} <<<<=============== */
+
+/*================>>>> FOOTER SECTION <<<<====================*/
+.footer {
+    background: var(--primary);
+}
+
+.footer .container {
+    display: grid;
+    place-items: center;
+    color: white;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+}
+
+.footer__content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer__title {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.footer__link {
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: var(--text);
+    display: block;
+    padding: 0.3rem 0;
+    line-height: 1.6;
+}
+
+.footer__link:hover {
+    color: var(--accent);
+}
+
+.footer__copy {
+    background: black;
+    color: var(--white);
+    padding: 2rem;
+}
+
+.footer__copy p {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--white);
+    text-align: center;
+}
